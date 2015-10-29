@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+
+<head>
+    <title>Angular JS starter app</title>
+    <link rel="stylesheet" href="app/css/bootstrap.css"/>
+    <link rel="stylesheet" href="app/css/styles.css"/>
+    <link rel="stylesheet" href="app/css/animations.css"/>
+</head>
+
+<body class="container">
+
+    <div data-ng-include="'app/topnav/topnav.html'"></div>
+
+    <div class="example-animate-container">
+        <div data-ng-view class="shuffle-animation"></div>
+    </div>
+
+    <script src="lib/jquery-2.0.3.js"></script>
+    <script src="lib/bootstrap.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/angular-resource.js"></script>
+    <script src="lib/angular-animate.js"></script>
+
+    <script src="app/app.config.js"></script>
+
+    <script src="app/topnav/topnav.module.js"></script>
+    <script src="app/topnav/topnav.controller.js"></script>
+
+    <script src="app/items/items.module.js"></script>
+    <script src="app/items/items.service.js"></script>
+    <script src="app/items/items.controller.js"></script>
+    <script src="app/items/itemdetails.controller.js"></script>
+
+    <script src="app/app.module.js"></script>
+
+</body>
+</html>

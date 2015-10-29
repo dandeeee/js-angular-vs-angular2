@@ -1,0 +1,19 @@
+<div data-ng-controller="itemsController as vm">
+    <h2>{{vm.pagetitle}}</h2>
+    <div>
+        <label>Filter</label>
+        <input data-ng-model="itemsFilter"/>
+    </div>
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+        <th>id</th>
+        <th>title</th>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="i in vm.items | filter:itemsFilter">
+            <td>{{i.id}}</td>
+            <td><a href="#/item/{{i.id}}">{{i.title}}</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
