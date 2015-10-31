@@ -50,10 +50,11 @@ gulp.task('ts2js', function () {
 gulp.task('build', ['ts2js', 'res', 'html', 'lib']);
 
 gulp.task('watch', function(){
-    return gulp.watch(PATHS.all, ['build']).on('change',browserSync.reload);
+    return gulp.watch(PATHS.all, ['build'])
+        //.on('change',browserSync.reload);
 });
 
-gulp.task('deploy',function () {
+gulp.task('deploy-browserSync',function () {
 
     browserSync({
         server: {
@@ -61,11 +62,25 @@ gulp.task('deploy',function () {
         },
         tunnel: true,
         host: 'localhost',
-        port: 9001,
+        port: 9002,
         logPrefix: "front-end"
     });
 
 });
 
-gulp.task('default', ['build', 'deploy', 'watch']);
+gulp.task('deploy-static',function(){
+    var http = require('http');
+    var connect = require('connect');
+    var serveStatic = require('serve-static');
+    var open = require('open');
+
+    var port = 9002, app;
+
+    app = connect().use(serveStatic(PATHS.out));
+    http.createServer(app).listen(port, function () {
+        open('http://localhost:' + port);
+    });
+});
+
+gulp.task('default', ['build', 'deploy-static', 'watch']);
 
