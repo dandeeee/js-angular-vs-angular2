@@ -1,7 +1,7 @@
 import {Component, View, NgFor, CORE_DIRECTIVES} from 'angular2/angular2';
 import {Http} from 'angular2/http'
 import {ItemsService} from "./ItemsService";
-import {RouterLink} from 'angular2/router';
+import {RouterLink, Router} from 'angular2/router';
 
 @Component({
     selector: 'itemslist'
@@ -20,8 +20,8 @@ export class ItemListComponent {
     service: ItemsService;
     items: Object[] = [];
 
-    constructor(http: Http){
-        this.service = new ItemsService(http);
+    constructor(srv: ItemsService){
+        this.service = srv;
         this.service
             .getAllItems()
             .subscribe(res => this.items = res.json());

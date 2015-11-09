@@ -1,4 +1,4 @@
-import {Component, View, Inject, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Inject} from 'angular2/angular2';
 import {Http} from 'angular2/http'
 
 export class ItemsService {
@@ -8,9 +8,10 @@ export class ItemsService {
     http: Http;
     url: string;
 
-    constructor(http: Http) {
+    constructor(@Inject http: Http) {
         this.http = http;
         this.url = 'http://localhost:7222';
+        console.log("Created ItemsService")
     }
 
     getAllItems(){

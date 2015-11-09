@@ -18,17 +18,22 @@ import {ItemDetailsComponent} from "./items/ItemDetailsComponent";
 })
 @RouteConfig([
     { path: '/', component: MainPage, as: 'Main' },
+
     { path: '/todo', component: TodoPage, as: 'Todo' },
+
     { path: '/items', component: ItemsPage, as: 'Items' },
     { path: '/item/:id', component: ItemDetailsComponent, as: 'ItemsDetails' }
 ])
 export class AppCmp {
+
     router: Router;
     location: Location;
+
     constructor(router: Router, location: Location) {
         this.router = router;
         this.location = location;
     }
+
     getLinkStyle(path) {
         return this.location.path() === path;
     }
